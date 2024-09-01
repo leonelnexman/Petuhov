@@ -1,0 +1,33 @@
+---
+title: Petuhov
+---
+{% extends "layouts/_layout.html" %}
+
+{% block content %}
+
+	{# partial example #}
+	<!-- {% include "partials/_navbar.html" %}
+	{% include "partials/_header.html" %} -->
+
+    <main class="main">
+		<h1>To-Do List</h1>
+        
+        <!-- Поле ввода для новой задачи -->
+        <input type="text" v-model="newTodo" placeholder="Введите новую задачу" @keyup.enter="addTodo">
+        <button @click="addTodo">Добавить</button>
+        
+        <!-- Список задач -->
+        <ul>
+            <li v-for="(todo, index) in todos" :key="index" class="todo-item">
+                {{ todo.text }}
+                <button @click="removeTodo(index)">Удалить</button>
+            </li>
+        </ul>
+    </main>
+
+	<!-- {% include "partials/_modal.html" %}
+
+	{% include "partials/_footer.html" %}
+	{% include "partials/_cookies.html" %} -->
+
+{% endblock %}
