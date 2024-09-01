@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Petuhov</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#fff" />
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="profile" href="https://gmpg.org/xfn/11" />
+    <link rel="icon" href="/icon/favicon.svg">
+    <link rel="stylesheet" media="all" href="css/app.css" />
+  </head>
+  <body>
+    <!-- Content -->
+    <div class="wrapper" id="app">
+      <!-- 
+	 -->
+      <main class="main">
+        <h1>To-Do List</h1>
+        <!-- Поле ввода для новой задачи -->
+        <input type="text" v-model="newTodo" placeholder="Введите новую задачу" @keyup.enter="addTodo">
+        <button @click="addTodo">Добавить</button>
+        <!-- Список задач -->
+        <ul>
+          <li v-for="(todo, index) in todos" :key="index" class="todo-item">
+            <button @click="removeTodo(index)">Удалить</button>
+          </li>
+        </ul>
+      </main>
+      <!-- 
+
+	
+	 -->
+    </div>
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+    <script>
+      const
+      {
+        createApp
+      } = Vue;
+      createApp(
+      {
+        data()
+        {
+          return {
+            newTodo: '', // Строка для новой задачи
+            todos: [] // Список задач
+          };
+        },
+        methods:
+        {
+          // Метод для добавления новой задачи
+          addTodo()
+          {
+            if (this.newTodo.trim() !== '')
+            {
+              this.todos.push(
+              {
+                text: this.newTodo
+              });
+              this.newTodo = ''; // Очистка поля ввода
+            }
+          },
+          // Метод для удаления задачи по индексу
+          removeTodo(index)
+          {
+            this.todos.splice(index, 1); // Удаление одной задачи
+          }
+        }
+      }).mount('#app');
+
+    </script>
+  </body>
+</html>
